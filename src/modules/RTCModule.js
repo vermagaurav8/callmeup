@@ -26,7 +26,7 @@ export const initiateConnection = async () => {
   try {
     // use free google stun servers
     var configuration = {
-      iceServers: [{   urls: [ "stun:bn-turn1.xirsys.com" ]}, {   username: "VIaYSbGh8KcZAmADzTyjs5MppKMurumtpJ7RRWbkbA-qwDYGBMu9MPxn5pY9jl9XAAAAAGBrFCt2ZXJtYXJpdHU=",   credential: "00f7bcc6-9615-11eb-8c43-0242ac140004",   urls: [       "turn:bn-turn1.xirsys.com:80?transport=udp",       "turn:bn-turn1.xirsys.com:3478?transport=udp",       "turn:bn-turn1.xirsys.com:80?transport=tcp",       "turn:bn-turn1.xirsys.com:3478?transport=tcp",       "turns:bn-turn1.xirsys.com:443?transport=tcp",       "turns:bn-turn1.xirsys.com:5349?transport=tcp"   ]}]
+      // Use your own iceServers here (STUN/TURN)
     }
     const conn = new RTCPeerConnection(configuration)
     return conn
