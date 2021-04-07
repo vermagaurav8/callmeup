@@ -6,7 +6,7 @@ import 'webrtc-adapter'
 function App () {
   return (
     <div className='app'>
-      <h1>Video Chat App</h1>
+      <h1>Call Me Up</h1>
       <h2>WebRTC + Firebase</h2>
       <VideoChatContainer/>
     </div>
