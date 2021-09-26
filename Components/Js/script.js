@@ -173,4 +173,16 @@ function scrollBottom() {
     ACTION BUTTONS FUNCTIONALITY
 */
 
-// CopyToClipnoard
+// CopyToClipboard
+document
+  .querySelector(".copy-meeting-id")
+  .children[1].addEventListener("click", function () {
+    let text = document.getElementById("meeting-id");
+    text.select();
+    text.setSelectionRange(0, 999999);
+    document.execCommand("copy");
+    document.getElementById("coppied-msg").innerText = "Meeting id coppied";
+    setTimeout(function () {
+      document.getElementById("coppied-msg").innerText = "";
+    }, 3000);
+  });
