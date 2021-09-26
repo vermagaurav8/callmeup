@@ -186,3 +186,35 @@ document
       document.getElementById("coppied-msg").innerText = "";
     }, 3000);
   });
+
+// Mute audio
+document.getElementById("mute-audio").addEventListener("click", function () {
+  if (localStream.getAudioTracks()[0]["enabled"]) {
+    localStream.getAudioTracks()[0]["enabled"] = false;
+    let element = document.getElementById("mute-audio").children[0];
+    element.classList.remove("fa-microphone");
+    element.classList.add("fa-microphone-slash");
+  } else {
+    let element = document.getElementById("mute-audio").children[0];
+    localStream.getAudioTracks()[0]["enabled"] = true;
+    element.classList.remove("fa-microphone-slash");
+    element.classList.add("fa-microphone");
+  }
+});
+
+// Mute video
+document.getElementById("mute-video").addEventListener("click", function () {
+  if (localStream.getVideoTracks()[0]["enabled"]) {
+    localStream.getVideoTracks()[0]["enabled"] = false;
+    let element = document.getElementById("mute-video").children[0];
+    element.classList.remove("fa-video");
+    element.classList.add("fa-video-slash");
+  } else {
+    localStream.getVideoTracks()[0]["enabled"] = true;
+    let element = document.getElementById("mute-video").children[0];
+    element.classList.remove("fa-video-slash");
+    element.classList.add("fa-video");
+  }
+  selfStream.getVideoTracks()[0]["enabled"] =
+    !selfStream.getVideoTracks()[0]["enabled"];
+});
