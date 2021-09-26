@@ -218,3 +218,18 @@ document.getElementById("mute-video").addEventListener("click", function () {
   selfStream.getVideoTracks()[0]["enabled"] =
     !selfStream.getVideoTracks()[0]["enabled"];
 });
+
+// End Call
+document.getElementById("call-end").addEventListener("click", function () {
+  if (confirm("Are you sure to end the meet?")) {
+    localStream.getTracks().forEach((track) => {
+      track.stop();
+    });
+    selfStream.getTracks().forEach((track) => {
+      track.stop();
+    });
+    peer.disconnect();
+    peer.close();
+    destroyCanvas();
+  }
+});
