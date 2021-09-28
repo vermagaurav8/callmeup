@@ -170,6 +170,55 @@ document.getElementById("join-room").addEventListener("click", function () {
   });
 });
 
+/*
+  SCREEN SHARE OPTION
+*/
+
+let screenShare = false;
+let videoOnScreen;
+
+document.getElementById("share-screen").addEventListener("click", function () {
+  if (!screenShare) {
+    screenShare = true;
+    document
+      .getElementById("share-screen")
+      .children[0].classList.remove("fas", "fa-desktop");
+    document
+      .getElementById("share-screen")
+      .children[0].classList.add("fas", "fa-times");
+
+    navigator.mediaDevices
+      .getDisplayMedia({
+        video: {
+          cursor: "always",
+        },
+        audio: true,
+      })
+      .then((stream) => {
+        videoOnScreen = stream.getVideoTracks()[0];
+        videoOnScreen.onended = function () {
+          stopScreenShare();
+        };
+        let host = currentPeer.getSenders().find((e) => {
+          return e.track.kind == videoOnScreen.kind;
+        });
+        host.replaceTrack(videoOnScreen);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    screenShare = false;
+    stopScreenShare();
+    document
+      .getElementById("share-screen")
+      .children[0].classList.remove("fas", "fa-times");
+    document
+      .getElementById("share-screen")
+      .children[0].classList.add("fas", "fa-desktop");
+  }
+});
+
 /* 
     UTILITY FUNCTIONS
     ###
@@ -305,3 +354,12 @@ document.getElementById("call-end").addEventListener("click", function () {
     destroyCanvas();
   }
 });
+
+// STOP SCREEN SHARE
+function stopScreenShare() {
+  let videoTrack = localStream.getVideoTracks()[0];
+  let host = currentPeer.getSenders().find((e) => {
+    return e.track.kind == videoTrack.kind;
+  });
+  host.replaceTrack(videoTrack);
+}
