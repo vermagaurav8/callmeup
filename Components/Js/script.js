@@ -219,6 +219,33 @@ document.getElementById("share-screen").addEventListener("click", function () {
   }
 });
 
+/*
+  Chat box functions
+*/
+
+// enabling/disabling chat container
+document.getElementById("chat-container").style.display = "none";
+document.getElementById("open-chat").addEventListener("click", (e) => {
+  let element = document.getElementById("chat-container");
+  if (element.style.display == "none") {
+    element.style.display = "block";
+    document
+      .getElementById("open-chat")
+      .children[0].classList.remove("fas", "fa-comment-alt");
+    document
+      .getElementById("open-chat")
+      .children[0].classList.add("fas", "fa-times");
+  } else {
+    element.style.display = "none";
+    document
+      .getElementById("open-chat")
+      .children[0].classList.remove("fas", "fa-times");
+    document
+      .getElementById("open-chat")
+      .children[0].classList.add("fas", "fa-comment-alt");
+  }
+});
+
 /* 
     UTILITY FUNCTIONS
     ###
