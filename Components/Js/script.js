@@ -98,6 +98,78 @@ document.getElementById("create-room").addEventListener("click", function () {
   });
 });
 
+/*
+@@@@@@@@@@@@@@
+ Function to join with roomId
+*/
+
+document.getElementById("join-room").addEventListener("click", function () {
+  var roomId = document.getElementById("room-id").value;
+  if (roomId == "" || roomId == " ") {
+    alert("please enter room no");
+    return;
+  }
+  roomId = roomId.toLowerCase();
+  if (!getUserMedia) {
+    alert("Your browser is not supported ! Please use updated browsers.");
+    return;
+  }
+
+  document
+    .getElementById("join-room")
+    .children[0].classList.add("fas", "fa-circle-notch", "fa-spin");
+
+  peer = new Peer();
+
+  // open event
+  peer.on("open", function (id) {
+    dataConnection = peer.connect(roomId);
+    dataConnection.on("data", function (data) {
+      let message = '<p class="remote-msg"><span>' + data + "</span></p>";
+      document.getElementById("chat").innerHTML += message;
+      scrollBottom();
+    });
+
+    if (getUserMedia) {
+      //getUserMedia function call
+      getUserMedia(streamSetting)
+        .then(function (stream) {
+          localStream = stream;
+          localVideo();
+          document.getElementById("show-msg").innerHTML = "Connecting ....";
+          createCanvas();
+          document
+            .getElementById("join-room")
+            .children[0].classList.remove("fas", "fa-circle-notch", "fa-spin");
+
+          let call = peer.call(roomId, localStream);
+          call.on("stream", function (stream) {
+            document.getElementById("show-msg").innerHTML = "";
+            currentPeer = call.peerConnection;
+            var video = document.querySelector("#remote-video");
+            video.srcObject = stream;
+            video.play();
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      console.log("getUserMedia not supported ! Please use updated browsers.");
+    }
+  });
+
+  // disconnected event
+  peer.on("disconnected", function () {
+    peer.destroy();
+  });
+
+  // close event
+  peer.on("close", function () {
+    window.location.reload();
+  });
+});
+
 /* 
     UTILITY FUNCTIONS
     ###
