@@ -246,6 +246,23 @@ document.getElementById("open-chat").addEventListener("click", (e) => {
   }
 });
 
+//send message function
+document.getElementById("send-msg").addEventListener("click", function () {
+  let message = document.getElementById("msg").value;
+  if (dataConnection == undefined) {
+    alert(
+      "No one else is in this meeting! You can send message when someone joins the meeting."
+    );
+    return;
+  }
+  dataConnection.send(message);
+  console.log("Appending sender msg");
+  let appendMsg = '<p class="self-msg"><span>' + message + `</span></p>`;
+  document.getElementById("chat").innerHTML += appendMsg;
+  scrollBottom();
+  document.getElementById("msg").value = "";
+});
+
 /* 
     UTILITY FUNCTIONS
     ###
@@ -329,7 +346,7 @@ document
     text.select();
     text.setSelectionRange(0, 999999);
     document.execCommand("copy");
-    document.getElementById("coppied-msg").innerText = "Meeting id coppied";
+    document.getElementById("coppied-msg").innerText = "Meeting id coppied!";
     setTimeout(function () {
       document.getElementById("coppied-msg").innerText = "";
     }, 3000);
@@ -340,13 +357,13 @@ document.getElementById("mute-audio").addEventListener("click", function () {
   if (localStream.getAudioTracks()[0]["enabled"]) {
     localStream.getAudioTracks()[0]["enabled"] = false;
     let element = document.getElementById("mute-audio").children[0];
-    element.classList.remove("fa-microphone");
-    element.classList.add("fa-microphone-slash");
+    element.classList.remove("fa-microphone-alt");
+    element.classList.add("fa-microphone-alt-slash");
   } else {
     let element = document.getElementById("mute-audio").children[0];
     localStream.getAudioTracks()[0]["enabled"] = true;
-    element.classList.remove("fa-microphone-slash");
-    element.classList.add("fa-microphone");
+    element.classList.remove("fa-microphone-alt-slash");
+    element.classList.add("fa-microphone-alt");
   }
 });
 
@@ -390,3 +407,20 @@ function stopScreenShare() {
   });
   host.replaceTrack(videoTrack);
 }
+
+/*
+  Handling textbox
+*/
+
+document.getElementById("room-id").addEventListener("keyup", function (event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById("join-room").click();
+  }
+});
+
+document.getElementById("msg").addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    document.getElementById("send-msg").click();
+  }
+});
