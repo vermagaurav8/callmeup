@@ -51,7 +51,7 @@
                         <span></span>
                     </button>
                     <div class="join">
-                        <input type="text" name="room-id" id="room-id" placeholder="Enter Meeting Code">
+                        <input type="text" name="room-id" id="room-id" class="room-id" placeholder="Enter Meeting Code">
                         <button class="btn" id="join-room">
                             Join
                             <span></span>
@@ -116,7 +116,8 @@
 
             <div class="chat-container" id="chat-container">
                 <h2 class="chat-header">Chat</h2>
-                <div class="chat-wrapper" id="chat"></div>
+                <div class="chat-wrapper" id="chat">
+                </div>
                 <div class="msg-btn">
                     <input type="text" class="msg" id="msg" placeholder="Write your message">
                     <button class="send-msg" id="send-msg">
@@ -128,7 +129,7 @@
 
         <!-- Action Control Buttons -->
         <div class="call-button">
-            <button id="mute-audio"><i class="fas fa-microphone"></i></button>
+            <button id="mute-audio"><i class="fas fa-microphone-alt"></i></button>
             <button id="mute-video"><i class="fas fa-video"></i></button>
             <button id="call-end"><i class="fas fa-phone"></i></button>
             <button id="share-screen"><i class="fas fa-desktop"></i></button>
