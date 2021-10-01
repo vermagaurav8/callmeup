@@ -3,7 +3,7 @@
   
 <a href="https://callmeup.netlify.app">
     <!-- image gif -->
-  <img alt="Callmeup" src="./client/src/Icons/callmeup-logo.svg" width="60" />
+  <img alt="Callmeup" src="Components/Icons/finalIcon.png" width="60" />
 </a>
 
 # Callmeup - Anonymous, Free Video Calls
