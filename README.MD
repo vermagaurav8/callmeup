@@ -1,7 +1,7 @@
 
 <div align="center">
   
-<a href="https://callmeup.netlify.app">
+<a href="https://callmeup.vermagaurav.co">
     <!-- image gif -->
   <img alt="Callmeup" src="Components/Icons/finalIcon.png" width="60" />
 </a>
@@ -29,7 +29,7 @@ Anonymous video calls across the world for free with screensharing!
 <br/>
 <br/>
 
-<a href="https://callmeup.netlify.app" target="_blank">View callmeup</a> · <a href="https://github.com/vermagaurav8/callmeup/issues/new/choose" target="_blank">Report Bug</a> · <a href="https://github.com/vermagaurav8/callmeup/issues/new/choose" target="_blank">Request Feature</a>
+<a href="https://callmeup.vermagaurav.co" target="_blank">View callmeup</a> · <a href="https://github.com/vermagaurav8/callmeup/issues/new/choose" target="_blank">Report Bug</a> · <a href="https://github.com/vermagaurav8/callmeup/issues/new/choose" target="_blank">Request Feature</a>
 
 ✨ _Loved the project? Give this project a star to show your support._ ✨
 
@@ -50,7 +50,7 @@ Anonymous video calls across the world for free with screensharing!
 
 ## 🚀 Getting started
 
-This project is deployed at [callmeup.netlify.app](https://callmeup.netlify.app)
+This project is deployed at [callmeup.vermagaurav.co](https://callmeup.vermagaurav.co)
 
 Guide for local deployment -
 
