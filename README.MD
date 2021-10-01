@@ -33,7 +33,7 @@ Anonymous video calls across the world for free with screensharing!
 
 ✨ _Loved the project? Give this project a star to show your support._ ✨
 
-<img src="./demo.gif" style="width: 80%"/>
+<img src="Components/Icons/demo.gif" style="width: 80%"/>
 
 </div>
 
